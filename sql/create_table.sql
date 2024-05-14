@@ -33,9 +33,19 @@ create table if not exists chart
     chartType varchar(128)      null comment '图表类型',
     genChart		 text null comment '生成的图表数据',
     genResult  text      null comment '生成分析结果',
+    -- 任务状态字段(排队中wait、执行中running、已完成succeed、失败failed)
+    status       varchar(128) not null default 'wait' comment 'wait,running,succeed,failed',
+    -- 任务执行信息字段
+    execMessage  text   null comment '执行信息',
     userId      bigint          null comment '创建用户id',
     createTime  datetime     default CURRENT_TIMESTAMP not null comment '创建时间',
     updateTime  datetime     default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
     isDelete    tinyint      default 0                 not null comment '是否删除'
 ) comment '图表信息' collate = utf8mb4_unicode_ci;
 
+
+create table chart_1659210482555121666
+(
+    日期  int null,
+    用户数 int null
+);

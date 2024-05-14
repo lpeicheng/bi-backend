@@ -6,6 +6,8 @@ import com.yupao.service.ChartService;
 import com.yupao.model.entity.Chart;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 /**
 * @author kuang
 * @description 针对表【chart(图表信息)】的数据库操作Service实现

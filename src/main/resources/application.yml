@@ -2,7 +2,7 @@
 
 spring:
   application:
-    name: biApplication
+    name: MainApplication
   # 默认 dev 环境
   profiles:
     active: dev

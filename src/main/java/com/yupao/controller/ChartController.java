@@ -364,6 +364,7 @@ public class ChartController {
         CompletableFuture.runAsync(() -> {
     // 先修改图表任务状态为 “执行中”。等执行成功后，修改为 “已完成”、保存执行结果；执行失败后，状态修改为 “失败”，记录任务失败信息。(为了防止同一个任务被多次执行)
             Chart updateChart=new Chart();
+            updateChart.setId(chart.getId());
             updateChart.setStatus("running");
             boolean b = chartService.updateById(updateChart);
             if (!b){

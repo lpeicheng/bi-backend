@@ -10,6 +10,7 @@ import com.yupao.constant.CommonConstant;
 import com.yupao.manager.AiManager;
 import com.yupao.manager.RedisLimiterManager;
 import com.yupao.model.dto.chart.*;
+import com.yupao.model.entity.ChartRetry;
 import com.yupao.model.vo.BiResponse;
 import com.yupao.service.ChartService;
 import com.yupao.annotation.AuthCheck;
@@ -95,6 +96,7 @@ public class ChartController {
      * @return
      */
     @PostMapping("/delete")
+    @AuthCheck(mustRole = UserConstant.DEFAULT_ROLE)
     public BaseResponse<Boolean> deleteChart(@RequestBody DeleteRequest deleteRequest, HttpServletRequest request) {
         if (deleteRequest == null || deleteRequest.getId() <= 0) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
@@ -160,6 +162,7 @@ public class ChartController {
      * @return
      */
     @PostMapping("/list/page")
+    @AuthCheck(mustRole = UserConstant.DEFAULT_ROLE)
     public BaseResponse<Page<Chart>> listChartByPage(@RequestBody ChartQueryRequest chartQueryRequest,
                                                      HttpServletRequest request) {
         long current = chartQueryRequest.getCurrent();
@@ -196,7 +199,7 @@ public class ChartController {
     }
 
     /**
-     * 同步展示结果
+     * 异步展示结果，也可以展示生成进度
      *
      * @param multipartFile
      * @param genChartByAiRequest
@@ -395,6 +398,21 @@ public class ChartController {
         biResponse.setChartId(chart.getId());
         return ResultUtils.success(biResponse);
     }
+
+//    /**
+//     * 重新生成图表和结论
+//     *
+//     * @param chartRetry
+//     * @return
+//     */
+//    @PostMapping("/retry")
+//    public BaseResponse<BiResponse> retryGenChart(ChartRetry chartRetry) {
+//        ThrowUtils.throwIf(chartRetry == null, ErrorCode.PARAMS_ERROR);
+//        Long chartId = chartRetry.getChartId();
+//
+//        biMessageProducer.sendMessage(BIMQConstant.BI_EXCHANGE_NAME, BIMQConstant.BI_ROUTING_KEY, String.valueOf(chartId));
+//        return new BiResponse(chartId);
+//    }
 
     // 上面的接口很多用到异常,直接定义一个工具类
     private void handleChartUpdateError(long chartId, String execMessage) {

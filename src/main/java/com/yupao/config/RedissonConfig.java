@@ -1,6 +1,7 @@
 package com.yupao.config;
 
 import lombok.Data;
+import lombok.Value;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
@@ -26,7 +27,7 @@ public class RedissonConfig {
         Config config = new Config();
         config.useSingleServer()
                 .setDatabase(database)
-                .setAddress("redis://" + host + ":" + port);
+                .setAddress("redis://" + host + ":" + port).setPassword(password);
         RedissonClient redisson = Redisson.create(config);
         return redisson;
     }

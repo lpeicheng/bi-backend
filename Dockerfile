@@ -13,3 +13,4 @@ RUN mvn package -DskipTests
 
 # Run the web service on container startup.
 CMD ["java","-jar","/app/target/bi-backend-0.0.1-SNAPSHOT.jar","--spring.profiles.active=prod"]
+java -jar bi-backend-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod

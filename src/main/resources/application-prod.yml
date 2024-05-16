@@ -26,14 +26,17 @@ spring:
   # todo 需替换配置
   redis:
     database: 1
-    host: 127.0.0.1
-    port: 6379
+    host: gz-crs-oxdvow23.sql.tencentcdb.com
+    port: 28953
     timeout: 5000
-    password: 123456
+    password: 1q2w3e,`
 
   session:
     timeout: 86400
     store-type: redis
+    redis:
+      namespace: spring:session
+      flush-mode: on_save
 mybatis-plus:
   configuration:
     # 生产环境关闭日志

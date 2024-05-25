@@ -13,6 +13,7 @@ import com.yupao.model.dto.user.UserLoginRequest;
 import com.yupao.model.dto.user.UserQueryRequest;
 import com.yupao.model.vo.LoginUserVO;
 import com.yupao.model.vo.UserVO;
+import com.yupao.service.AvatarService;
 import com.yupao.service.UserService;
 import com.yupao.common.DeleteRequest;
 import com.yupao.model.dto.user.UserRegisterRequest;
@@ -28,11 +29,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 
 /**
@@ -45,9 +43,9 @@ public class UserController {
 
     @Resource
     private UserService userService;
+    @Resource
+    private AvatarService avatarService;
 
-
-    // region 登录相关
 
     /**
      * 用户注册
@@ -173,6 +171,7 @@ public class UserController {
         if (userUpdateRequest == null || userUpdateRequest.getId() == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
+
         User user = new User();
         BeanUtils.copyProperties(userUpdateRequest, user);
         boolean result = userService.updateById(user);
@@ -274,6 +273,28 @@ public class UserController {
         User user = new User();
         BeanUtils.copyProperties(userUpdateMyRequest, user);
         user.setId(loginUser.getId());
+        boolean result = userService.updateById(user);
+        ThrowUtils.throwIf(!result, ErrorCode.OPERATION_ERROR);
+        return ResultUtils.success(true);
+    }
+
+    /**
+     * 更新头像
+     *
+     * @param multipartFile 头像文件流
+     * @param request       请求
+     * @return 成功信息
+     */
+    @PostMapping("/update/myAvatar")
+    public BaseResponse<Boolean> updateMyAvatar(@RequestPart("file") MultipartFile multipartFile, HttpServletRequest request) {
+        if (multipartFile == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        User loginUser = userService.getLoginUser(request);
+        User user = new User();
+        String userAvatar = avatarService.upload(multipartFile);
+        user.setId(loginUser.getId());
+        user.setUserAvatar(userAvatar);
         boolean result = userService.updateById(user);
         ThrowUtils.throwIf(!result, ErrorCode.OPERATION_ERROR);
         return ResultUtils.success(true);

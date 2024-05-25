@@ -19,9 +19,13 @@ spring:
   # 数据库配置
   # todo 需替换配置
   datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/bi
+#    username: root
+#    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bi
-    username: root
+    url: jdbc:mysql://106.52.221.21:3306/bi
+    username: bi
     password: 123456
   # Redis 配置
   redis:
@@ -29,7 +33,6 @@ spring:
     host: localhost
     port: 6379
     timeout: 5000
-    password: 123456
   # Elasticsearch 配置
   # 文件上传
   servlet:
@@ -66,7 +69,17 @@ knife4j:
         api-rule: package
         api-rule-resources:
           - com.yupao.controller
-yuapi:
+
+# 讯飞星火配置
+xunfei:
   client:
-    access-key: jjal6dolyt2bwz31g9bhd1kufb3mwh62
-    secret-key: fvd0wvw7xux8n92km9dbb4plj3vacppt
+    appid: 55d12898
+    apiSecret: 96c34f68daee3f9483f165ed58feb2ea
+    apiKey: YTk0MGE5NGYxNGIwN2U4YTAxNTI5Njk5
+
+aliyun:
+  oss:
+    endpoint: oss-cn-guangzhou.aliyuncs.com
+    bucket: bi-backend
+    accessKeyId: LTAI5t8nARZCGuxz5zo9xoLu
+    accessKeySecret: UreDDjhJO8sQeKxfyXNl6serynqJsL

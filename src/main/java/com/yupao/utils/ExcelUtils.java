@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 public class ExcelUtils {
-    public static String excelToCsv(MultipartFile multipartFile) {
+    public static String XlsxToCsv(MultipartFile multipartFile) {
         // 读取数据
         List<Map<Integer, String>> list = null;
         try {
@@ -56,7 +56,76 @@ public class ExcelUtils {
         return stringBuilder.toString();
     }
 
-    public static void main(String[] args) {
-        excelToCsv(null);
+
+    /**
+     * 读取csv
+     *
+     * @param multipartFile 文件流
+     * @return 文件的字符串形式
+     */
+    public static String Csv(MultipartFile multipartFile){
+        // 读取数据
+        List<Map<Integer, String>> list = null;
+        try {
+            list = EasyExcel.read(multipartFile.getInputStream())
+                    .excelType(ExcelTypeEnum.CSV)
+                    .sheet()
+                    .headRowNumber(0)
+                    .doReadSync();
+        } catch (IOException e) {
+            log.error("表格处理错误", e);
+        }
+        if (CollUtil.isEmpty(list)) {
+            return "";
+        }
+        // 转换为 csv
+        StringBuilder stringBuilder = new StringBuilder();
+        // 读取表头
+        LinkedHashMap<Integer, String> headerMap = (LinkedHashMap) list.get(0);
+        List<String> headerList = headerMap.values().stream().filter(ObjectUtils::isNotEmpty).collect(Collectors.toList());
+        stringBuilder.append(StringUtils.join(headerList, ",")).append("\n");
+        //读取数据
+        for (int i = 1; i < list.size(); i++) {
+            LinkedHashMap<Integer, String> dataMap = (LinkedHashMap) list.get(i);
+            List<String> dataList = dataMap.values().stream().filter(ObjectUtils::isNotEmpty).collect(Collectors.toList());
+            stringBuilder.append(StringUtils.join(dataList, ",")).append("\n");
+        }
+        return stringBuilder.toString();
+    }
+
+    /**
+     * XLS 转 CSV
+     *
+     * @param multipartFile 文件流
+     * @return 文件的字符串形式
+     */
+    public static String XlsToCsv(MultipartFile multipartFile){
+        // 读取数据
+        List<Map<Integer, String>> list = null;
+        try {
+            list = EasyExcel.read(multipartFile.getInputStream())
+                    .excelType(ExcelTypeEnum.XLS)
+                    .sheet()
+                    .headRowNumber(0)
+                    .doReadSync();
+        } catch (IOException e) {
+            log.error("表格处理错误", e);
+        }
+        if (CollUtil.isEmpty(list)) {
+            return "";
+        }
+        // 转换为 csv
+        StringBuilder stringBuilder = new StringBuilder();
+        // 读取表头
+        LinkedHashMap<Integer, String> headerMap = (LinkedHashMap) list.get(0);
+        List<String> headerList = headerMap.values().stream().filter(ObjectUtils::isNotEmpty).collect(Collectors.toList());
+        stringBuilder.append(StringUtils.join(headerList, ",")).append("\n");
+        //读取数据
+        for (int i = 1; i < list.size(); i++) {
+            LinkedHashMap<Integer, String> dataMap = (LinkedHashMap) list.get(i);
+            List<String> dataList = dataMap.values().stream().filter(ObjectUtils::isNotEmpty).collect(Collectors.toList());
+            stringBuilder.append(StringUtils.join(dataList, ",")).append("\n");
+        }
+        return stringBuilder.toString();
     }
 }

@@ -26,10 +26,10 @@ spring:
   # todo 需替换配置
   redis:
     database: 1
-    host: gz-crs-oxdvow23.sql.tencentcdb.com
-    port: 28953
+    host: 106.52.221.21
+    port: 6379
     timeout: 5000
-    password: 1q2w3e,`
+    password: 123456
 
   session:
     timeout: 86400

@@ -9,23 +9,4 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class AiManagerTest {
 
-    @Resource
-    private AiManager aiManager;
-    @Test
-    void doChat() {
-        String s = aiManager.doChat(1786421282817560578L, "分析需求：\n" +
-                "\n" +
-                "分析网站用户的增长情况\n" +
-                "\n" +
-                "原始数据：\n" +
-                "\n" +
-                "日期,用户数\n" +
-                "\n" +
-                "1号,10\n" +
-                "\n" +
-                "2号,20\n" +
-                "\n" +
-                "3号,30");
-        System.out.println(s);
-    }
 }

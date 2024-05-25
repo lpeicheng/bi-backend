@@ -30,6 +30,11 @@ public class User implements Serializable {
     private String userPassword;
 
     /**
+     * 密码
+     */
+    private String checkPassword;
+
+    /**
      * 用户昵称
      */
     private String userName;
@@ -53,6 +58,8 @@ public class User implements Serializable {
      * 更新时间
      */
     private Date updateTime;
+
+    private String userProfile;
 
     /**
      * 是否删除
@@ -79,6 +86,7 @@ public class User implements Serializable {
             && (this.getUserAccount() == null ? other.getUserAccount() == null : this.getUserAccount().equals(other.getUserAccount()))
             && (this.getUserPassword() == null ? other.getUserPassword() == null : this.getUserPassword().equals(other.getUserPassword()))
             && (this.getUserName() == null ? other.getUserName() == null : this.getUserName().equals(other.getUserName()))
+            && (this.getCheckPassword() == null ? other.getCheckPassword() == null : this.getCheckPassword().equals(other.getCheckPassword()))
             && (this.getUserAvatar() == null ? other.getUserAvatar() == null : this.getUserAvatar().equals(other.getUserAvatar()))
             && (this.getUserRole() == null ? other.getUserRole() == null : this.getUserRole().equals(other.getUserRole()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
@@ -99,6 +107,7 @@ public class User implements Serializable {
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
         result = prime * result + ((getIsDelete() == null) ? 0 : getIsDelete().hashCode());
+        result = prime * result + ((getCheckPassword() == null) ? 0 : getCheckPassword().hashCode());
         return result;
     }
 
@@ -117,6 +126,7 @@ public class User implements Serializable {
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", isDelete=").append(isDelete);
+        sb.append(", checkPassword=").append(checkPassword);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

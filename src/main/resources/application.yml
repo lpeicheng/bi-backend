@@ -79,7 +79,7 @@ xunfei:
 
 aliyun:
   oss:
-    endpoint:
-    bucket:
-    accessKeyId:
-    accessKeySecret:
+    endpoint: oss-cn-guangzhou.aliyuncs.com
+    bucket: bi-backend
+    accessKeyId: LTAI5t8nARZCGuxz5zo9xoLu
+    accessKeySecret: UreDDjhJO8sQeKxfyXNl6serynqJsL

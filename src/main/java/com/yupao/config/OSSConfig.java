@@ -1,6 +1,7 @@
 package com.yupao.config;
 
 import lombok.Data;
+import lombok.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,7 +14,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @Data
 public class OSSConfig {
-
     private String endPoint;
     private String accessKeyId;
     private String accessKeySecret;

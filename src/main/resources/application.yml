@@ -77,9 +77,9 @@ xunfei:
     apiSecret: 96c34f68daee3f9483f165ed58feb2ea
     apiKey: YTk0MGE5NGYxNGIwN2U4YTAxNTI5Njk5
 
-aliyun:
-  oss:
-    endpoint: oss-cn-guangzhou.aliyuncs.com
-    bucket: bi-backend
-    accessKeyId: LTAI5t8nARZCGuxz5zo9xoLu
-    accessKeySecret: UreDDjhJO8sQeKxfyXNl6serynqJsL
+#aliyun:
+#  oss:
+#    endpoint: oss-cn-guangzhou.aliyuncs.com
+#    bucket: bi-backend
+#    accessKeyId: LTAI5t8nARZCGuxz5zo9xoLu
+#    accessKeySecret: UreDDjhJO8sQeKxfyXNl6serynqJsL

@@ -1,5 +1,4 @@
 # 公共配置文件
-
 spring:
   application:
     name: MainApplication
@@ -39,6 +38,32 @@ spring:
     multipart:
       # 大小限制
       max-file-size: 10MB
+#邮箱验证码配置
+  mail:
+    #smtp服务主机  qq邮箱则为smtp.qq.com; 163邮箱是smtp.163.com
+    host: smtp.qq.com
+    port: 465
+    username: 2236672196@qq.com
+    password: yynqgwsfhmczdijf
+    default-encoding: UTF-8
+    # 服务协议
+    protocol: smtp
+    nickname: linpeicheng
+
+    test-connection: true
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            enable: true
+          socketFactory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+
 server:
   address: 0.0.0.0
   port: 8101
@@ -78,3 +103,10 @@ xunfei:
     apiKey: YTk0MGE5NGYxNGIwN2U4YTAxNTI5Njk5
 
 # 阿里云对象存储配置 不要提交到github
+aliyun:
+  oss:
+    endpoint: oss-cn-guangzhou.aliyuncs.com
+    bucketName: bi-backend
+    accessKeyId: LTAI5t8nARZCGuxz5zo9xoLu
+    accessKeySecret: UreDDjhJO8sQeKxfyXNl6serynqJsL
+

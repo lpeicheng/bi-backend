@@ -8,17 +8,12 @@ import com.yupao.common.ResultUtils;
 import com.yupao.constant.UserConstant;
 import com.yupao.exception.BusinessException;
 import com.yupao.exception.ThrowUtils;
-import com.yupao.model.dto.user.UserAddRequest;
-import com.yupao.model.dto.user.UserLoginRequest;
-import com.yupao.model.dto.user.UserQueryRequest;
+import com.yupao.model.dto.user.*;
 import com.yupao.model.vo.LoginUserVO;
 import com.yupao.model.vo.UserVO;
 import com.yupao.service.AvatarService;
 import com.yupao.service.UserService;
 import com.yupao.common.DeleteRequest;
-import com.yupao.model.dto.user.UserRegisterRequest;
-import com.yupao.model.dto.user.UserUpdateMyRequest;
-import com.yupao.model.dto.user.UserUpdateRequest;
 import com.yupao.model.entity.User;
 
 import java.util.List;
@@ -298,5 +293,33 @@ public class UserController {
         boolean result = userService.updateById(user);
         ThrowUtils.throwIf(!result, ErrorCode.OPERATION_ERROR);
         return ResultUtils.success(true);
+    }
+
+    /**
+     * 用户忘记密码
+     *
+     * @param userForgetRequest 忘记密码请求体
+     * @return 用户的信息
+     */
+    @PostMapping("/forget")
+    public BaseResponse<Boolean> userForget(@RequestBody UserForgetRequest userForgetRequest) {
+        if (userForgetRequest == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        String userEmail = userForgetRequest.getUserEmail();
+        String userPassword = userForgetRequest.getUserPassword();
+        String checkPassword = userForgetRequest.getCheckPassword();
+        String captcha = userForgetRequest.getCaptcha();
+        if (StringUtils.isAnyBlank(userEmail)) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "邮箱为空");
+        }
+        if (StringUtils.isAnyBlank(userPassword, checkPassword)) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "邮箱或密码为空");
+        }
+        if (StringUtils.isAnyBlank(captcha)) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "验证码为空");
+        }
+        boolean result = userService.userForget(userEmail, userPassword, checkPassword, captcha);
+        return ResultUtils.success(result);
     }
 }

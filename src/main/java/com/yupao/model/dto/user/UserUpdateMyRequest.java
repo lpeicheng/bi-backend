@@ -21,6 +21,11 @@ public class UserUpdateMyRequest implements Serializable {
     private String userAvatar;
 
     /**
+     * 用户邮箱
+     */
+    private String userEmail;
+
+    /**
      * 简介
      */
     private String userProfile;

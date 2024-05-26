@@ -108,4 +108,28 @@ public interface UserService extends IService<User> {
      */
     QueryWrapper<User> getQueryWrapper(UserQueryRequest userQueryRequest);
 
+    /**
+     * 忘记密码
+     *
+     * @param userEmail     邮箱
+     * @param userPassword  用户密码
+     * @param checkPassword 校验密码
+     * @param captcha       验证码
+     * @return 是否更新成功
+     */
+    boolean userForget(String userEmail, String userPassword, String checkPassword, String captcha);
+
+    /**
+     * 发送注册验证码
+     * @param userEmail
+     * @return
+     */
+     boolean sendRegisterCaptcha(String userEmail);
+
+    /**
+     * 发送忘记密码验证码
+     * @param userEmail
+     * @return
+     */
+     boolean sendForgetCaptcha(String userEmail);
 }

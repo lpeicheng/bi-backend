@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 /**
  * 验证码接口
  *
- * @Author Kone
+ * @author paopao
  * @Date 2024/5/3
  */
 @RestController

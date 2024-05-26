@@ -7,7 +7,7 @@ import com.rabbitmq.client.ConnectionFactory;
 import java.nio.charset.StandardCharsets;
 
 /**
- * @author <a href="https://github.com/lieeew">leikooo</a>
+ * @author paopao 
  * 生产者
  */
 public class SingleProducer {

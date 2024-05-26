@@ -4,7 +4,7 @@ import com.rabbitmq.client.*;
 
 
 /**
- * @author <a href="https://github.com/lieeew">leikooo</a>
+ * @author paopao 
  */
 public class FanoutConsumer {
     private static final String EXCHANGE_NAME = "fanout-exchange";

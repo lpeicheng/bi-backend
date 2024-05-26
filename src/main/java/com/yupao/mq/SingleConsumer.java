@@ -8,7 +8,7 @@ import com.rabbitmq.client.DeliverCallback;
 import java.nio.charset.StandardCharsets;
 
 /**
- * @author <a href="https://github.com/lieeew">leikooo</a>
+ * @author paopao 
  * 消费者
  */
 public class SingleConsumer {

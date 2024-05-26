@@ -1,7 +1,7 @@
 package com.yupao.service;
 
 /**
- * @Author Kone
+ * @author paopao
  * @Date 2024/5/3
  */
 public interface EmailService {

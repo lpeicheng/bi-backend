@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 /**
-* @author kuang
+* @author paopao
 * @description 针对表【chart(图表信息)】的数据库操作Service实现
 * @createDate 2024-05-01 23:07:24
 */

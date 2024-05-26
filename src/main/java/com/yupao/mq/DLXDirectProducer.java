@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * @author <a href="https://github.com/lieeew">leikooo</a>
+ * @author paopao
  * 死信
  */
 public class DLXDirectProducer {

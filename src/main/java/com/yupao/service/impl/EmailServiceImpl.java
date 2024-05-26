@@ -23,6 +23,8 @@ public class EmailServiceImpl implements EmailService {
     @Resource
     private JavaMailSender mailSender;
 
+    //渲染模板，将模板上下文（templateContext）渲染到写入器（writer）
+    //提供一种了一种简单的方法来处理和渲染Thymeleaf模板 （render方法）
     @Resource
     TemplateEngine templateEngine;
 
@@ -60,7 +62,7 @@ public class EmailServiceImpl implements EmailService {
     }
 
     /**
-     * 发送注册邮件
+     * 发送忘记密码邮件
      *
      * @param userEmail 用户邮箱
      * @param captcha   随机验证码

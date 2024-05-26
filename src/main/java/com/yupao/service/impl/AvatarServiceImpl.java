@@ -18,7 +18,6 @@ import java.util.UUID;
 /**
  * 文件上传业务类
  *
- * @author lixiang
  */
 @Service
 @Slf4j
@@ -53,6 +52,7 @@ public class AvatarServiceImpl implements AvatarService {
         //拼装OSS上存储的路径
         String folder = dft.format(time);
         String fileName = generateUUID();
+        //文件后缀
         String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
 
         //在OSS上bucket下的文件名
@@ -79,6 +79,7 @@ public class AvatarServiceImpl implements AvatarService {
      * @return
      */
     private String generateUUID() {
+        //replaceAll 代替   生成32位随机字符串
         return UUID.randomUUID().toString().replaceAll("-", "").substring(0, 32);
     }
 }

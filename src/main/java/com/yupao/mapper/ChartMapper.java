@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
-* @author kuang
+* @author paopao
 * @description 针对表【chart(图表信息)】的数据库操作Mapper
 * @createDate 2024-05-01 23:07:24
 * @Entity com.yupi.springbootinit.model.entity.Chart

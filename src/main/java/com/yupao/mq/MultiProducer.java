@@ -6,7 +6,7 @@ import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.MessageProperties;
 
 /**
- * @author liang
+ * @author paopao
  */
 public class MultiProducer {
 

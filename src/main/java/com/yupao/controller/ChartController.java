@@ -50,7 +50,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * 用户接口
+ * 图表接口
  */
 @RestController
 @RequestMapping("/chart")

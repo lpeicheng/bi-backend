@@ -3,7 +3,7 @@ package com.yupao.mq;
 import com.rabbitmq.client.*;
 
 /**
- * @author <a href="https://github.com/lieeew">leikooo</a>
+ * @author paopao 
  */
 public class DirectConsumer {
 

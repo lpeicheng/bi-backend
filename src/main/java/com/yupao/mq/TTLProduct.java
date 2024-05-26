@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.util.concurrent.TimeoutException;
 
 /**
- * @author <a href="https://github.com/lieeew">leikooo</a>
+ * @author paopao 
  * @Description
  */
 public class TTLProduct {

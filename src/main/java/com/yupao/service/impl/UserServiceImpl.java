@@ -284,6 +284,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public boolean sendRegisterCaptcha(String userEmail) {
+        //邮箱命名规范
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*\\.[a-zA-Z0-9]{2,6}$");
         Matcher matcher = pattern.matcher(userEmail);
         if (!matcher.find()) {

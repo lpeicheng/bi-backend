@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * OSS配置类
  *
- * @author Kone
+ * @author paopao
  */
 @ConfigurationProperties(prefix = "aliyun.oss")
 @Configuration

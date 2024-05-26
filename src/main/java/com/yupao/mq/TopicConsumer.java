@@ -6,7 +6,7 @@ import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
 
 /**
- * @author <a href="https://github.com/lieeew">leikooo</a>
+ * @author paopao
  */
 public class TopicConsumer {
 
